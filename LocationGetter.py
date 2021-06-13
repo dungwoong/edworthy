@@ -56,7 +56,7 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
     return ret_dict, ret_list
 
 
-def write_dict(dicl):
+def write_dict(dicl, filename):
     """Precondition: Usual and Current in dict
     """
     # Hour 0-23
@@ -64,7 +64,7 @@ def write_dict(dicl):
     day = datetime.datetime.today().weekday()
     hour = datetime.datetime.now().hour
     date = datetime.datetime.today().strftime('%Y-%m-%d')
-    csve = 'edworthy.csv'
+    csve = filename
     file = open(csve, 'a', newline='', encoding='UTF-8')
     writist = csv.writer(file, lineterminator='\n')
     lst = [day, hour, dicl['Usual'], dicl['Current'], date]

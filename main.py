@@ -76,6 +76,7 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
+# TODO add ymca later when it REOPENS HUHH
 @bot.command(name='park')
 async def location_info(ctx):
     """NOTES:
@@ -93,7 +94,7 @@ async def location_info(ctx):
         info = ''
         if 'Usual' in locdic and 'Current' in locdic:
             info += f"**[{round(100 * locdic['Current'] / locdic['Usual'])}% / {locdic['Current']}]**\n\n"
-            info += f"Usual/Current = [{locdic['Usual']}/{locdic['Current']}]\n"
+            info += f"Current/Usual = [{locdic['Current']}/{locdic['Usual']}]\n"
         else:
             info += "Could not compute stats.\n\n"
         if 'Unknown' in locdic:
@@ -135,8 +136,8 @@ def check_uc(u: float, c: float) -> str:
 async def check_good_loc():
     print('Hourly notif')
     # This is really hard to test, but I think it works. Check the notif command, it's similar to this.
-    uid = 231241995253710851
-    # OH FUCK IT WORKS OK
+    uid = cfg['myid']
+    # OH IT WORKS OK
     channel = await bot.fetch_user(uid)
     if channel is None:
         return
@@ -145,7 +146,7 @@ async def check_good_loc():
         # Don't do any checks, just stop lol
         return
     should_send = False
-    embed = discord.Embed(title="HOURLY UPDATE", description='', color=0xb0605d)
+    embed = discord.Embed(title=f"HOURLY UPDATE FOR {now.strftime('%m/%d - %I:%M')}", description='', color=0xb0605d)
     report = ''
     for location in LOCATIONDICT:
         locdic, _ = LocationGetter.get_bar_height(LOCATIONDICT[location])
@@ -153,8 +154,10 @@ async def check_good_loc():
             report = check_uc(locdic['Usual'], locdic['Current'])
         if report == '':
             embed.add_field(name=location, value='*Nothing*', inline=False)
+            should_send = True
         else:
             embed.add_field(name=location, value=report, inline=False)
+            # for now I'll just make it always send me notifications
             should_send = True
     if should_send:
         await channel.send(embed=embed)
@@ -170,7 +173,10 @@ async def collect_info():
         return
     locdic, _ = LocationGetter.get_bar_height(EDWORTHY)
     if 'Usual' in locdic and 'Current' in locdic:
-        LocationGetter.write_dict(locdic)
+        LocationGetter.write_dict(locdic, 'edworthy.csv')
+    locdic, _ = LocationGetter.get_bar_height(BOWNESS)
+    if 'Usual' in locdic and 'Current' in locdic:
+        LocationGetter.write_dict(locdic, 'bowness.csv')
 
 
 bot.run(TOKEN)
