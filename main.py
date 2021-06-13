@@ -52,7 +52,7 @@ async def on_ready():
 
 @bot.command(name='test')
 async def basic_command(ctx):
-    msg = '*nice* _cock_ {0.author.mention}'.format(ctx.message)
+    msg = '*nice* #### {0.author.mention}'.format(ctx.message)
     await ctx.send(msg)
 
 
