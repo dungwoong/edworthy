@@ -60,6 +60,7 @@ def write_dict(dicl, filename):
     """Precondition: Usual and Current in dict
     """
     # Hour 0-23
+    # 0 is monday??
     # Day 0-6
     day = datetime.datetime.today().weekday()
     hour = datetime.datetime.now().hour
