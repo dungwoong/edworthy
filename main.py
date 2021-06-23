@@ -23,7 +23,7 @@ LOCATIONDICT = {'Edworthy': EDWORTHY,
                 'Nose Hill': NOSEHILL,
                 "Prince's island": PRINCESISLAND,
                 "Damascus": DAMASCUS}
-config_file = 'config.json'
+config_file = 'cfg.json'
 
 
 def get_config():
