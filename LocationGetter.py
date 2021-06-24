@@ -39,15 +39,15 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
         px = px[:-3]
         px = round(float(px) / 75 * 100)
         # print(px)
-        if len(classes) == 1:
-            ret_list.append(px)
-            continue
         if usual_class in classes:
             ret_dict['Usual'] = px
             ret_list.append(float(px))
         elif now_class in classes:
             ret_dict['Current'] = px
         else:
+            if len(classes) == 1:
+                ret_list.append(px)
+                continue
             if 'Unknown' in ret_dict:
                 ret_dict['Unknwon'] += [px]
             else:
