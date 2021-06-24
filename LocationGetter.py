@@ -53,6 +53,9 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
             else:
                 ret_dict['Unknown'] = [px]
             ret_list.append(px)
+    if "edworthy" in location:
+        print(ret_dict)
+        print(soup)
     return ret_dict, ret_list
 
 
