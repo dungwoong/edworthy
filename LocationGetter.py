@@ -24,6 +24,7 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
     response = requests.get(url + location, headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
     bigdiv = soup.find("div", class_="jvCr1e")
+    print(soup)
 
     if bigdiv is None:
         print('did not find jvcr1e')
