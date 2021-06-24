@@ -85,6 +85,7 @@ async def location_info(ctx):
     # print('{0.author.mention}'.format(ctx.message))
     desc = "Max occupancy is 100."
     embed = discord.Embed(title="Info", description=desc, color=0xb0605d)
+    print(LOCATIONDICT)
     for location in LOCATIONDICT:
         # I want to report current/usual bars, then the max bar for today.
         locdic, loclst = LocationGetter.get_bar_height(LOCATIONDICT[location])

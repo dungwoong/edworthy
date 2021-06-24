@@ -12,6 +12,7 @@ import datetime
 
 # TODO TEST THIS
 def get_bar_height(location: str) -> Tuple[Dict, List]:
+    print(location)
     ret_dict = {}
     ret_list = []
     url = 'https://www.google.com/search?q='
@@ -25,11 +26,13 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
     bigdiv = soup.find("div", class_="jvCr1e")
 
     if bigdiv is None:
+        print('did not find jvcr1e')
         return ret_dict, ret_list
 
     bars = bigdiv.find_all('div', class_=div_class)
 
     if len(bars) == 0:
+        print('did not find bars')
         return ret_dict, ret_list
 
     for a in bars:
@@ -53,7 +56,6 @@ def get_bar_height(location: str) -> Tuple[Dict, List]:
             else:
                 ret_dict['Unknown'] = [px]
             ret_list.append(px)
-    print(location)
     if "edworthy+park" == location:
         print(ret_dict)
         print(soup)
