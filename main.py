@@ -25,7 +25,6 @@ LOCATIONDICT = {'Edworthy': EDWORTHY,
                 'Nose Hill': NOSEHILL,
                 "Prince's island": PRINCESISLAND,
                 "Damascus": DAMASCUS}
-config_file = 'cfg.json'
 
 
 load_dotenv()
@@ -137,7 +136,7 @@ def check_uc(u: float, c: float) -> str:
 async def check_good_loc():
     print('Hourly notif')
     # This is really hard to test, but I think it works. Check the notif command, it's similar to this.
-    uid = cfg['myid']
+    uid = os.getenv("MYID")
     # OH IT WORKS OK
     channel = await bot.fetch_user(uid)
     if channel is None:
