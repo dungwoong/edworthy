@@ -68,7 +68,8 @@ async def help_command(ctx):
     desc = 'test: testing command\n' \
            'embed_demo: embed demo command\n' \
            'park: park info\n' \
-           'notif: notify if anything good'
+           'notif: notify if anything good\n' \
+           'testdm: testdm'
     embed = discord.Embed(title="Info", description=desc, color=0xb0605d)
     await ctx.send(embed=embed)
 
@@ -118,6 +119,20 @@ async def notif_loc(ctx):
         else:
             embed.add_field(name=location, value=report, inline=False)
     await ctx.send(embed=embed)
+
+
+@bot.command(name='testdm')
+async def test_notif(ctx):
+    print('testdm')
+    uid = os.getenv("MYID")
+    # OH IT WORKS OK
+    channel = await bot.fetch_user(uid)
+    if channel is None:
+        return
+    msg = "hello".format(ctx.message)
+    msg2 = "testing message".format(ctx.message)
+    await ctx.send(msg2)
+    await channel.send(msg)
 
 
 # HELPERS
