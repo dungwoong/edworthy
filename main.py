@@ -3,6 +3,8 @@ This is the main discord bot code.
 """
 
 import json
+from dotenv import load_dotenv
+import os
 
 import discord
 from discord.ext import commands, tasks
@@ -26,14 +28,10 @@ LOCATIONDICT = {'Edworthy': EDWORTHY,
 config_file = 'cfg.json'
 
 
-def get_config():
-    with open(config_file, 'r') as file:
-        config = json.load(file)
-        return config
+load_dotenv()
 
 
-cfg = get_config()
-TOKEN = cfg['token']
+TOKEN = os.getenv("TOKEN")
 
 bot = commands.Bot(command_prefix='?', help_command=None)
 
@@ -100,7 +98,10 @@ async def location_info(ctx):
         if 'Unknown' in locdic:
             info += f"Unknown: {locdic['Unknown']}\n"
         # info += f'Daily Max: {max(loclst)}'
-        info += f'Avg Popularity for the day: {round(mean(loclst))}'
+        if len(loclst) > 0:
+            info += f'Avg Popularity for the day: {round(mean(loclst))}'
+        else:
+            info += "Couldn't find avg popularity :("
         embed.add_field(name=location, value=info, inline=False)
     await ctx.send(embed=embed)
 
