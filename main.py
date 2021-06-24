@@ -20,11 +20,11 @@ BOWNESS = 'bowness+park'
 NOSEHILL = 'nose+hill+park'
 PRINCESISLAND = 'prince%27s+island+park'
 DAMASCUS = 'damascus+calgary'
-LOCATIONDICT = {'Edworthy': EDWORTHY,
+LOCATIONDICT = {"Damascus": DAMASCUS,
+                'Edworthy': EDWORTHY,
                 'Bowness': BOWNESS,
                 'Nose Hill': NOSEHILL,
-                "Prince's island": PRINCESISLAND,
-                "Damascus": DAMASCUS}
+                "Prince's island": PRINCESISLAND}
 
 
 load_dotenv()
