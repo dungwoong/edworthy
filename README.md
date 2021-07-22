@@ -4,8 +4,9 @@
 ## Tech
 This is a discord bot written in python.
 It uses discord.py to run the bot, and uses BeautifulSoup to collect data on different parks that I can go for walks at.
+The code can be found at [main.py](https://github.com/dungwoong/edworthy/blob/master/main.py)
 
-You could use it to get data for locations other than parks, which is why I put in Damascus Calgary(good place to eat btw) as a test.
+I'm trying to adapt it to get data for locations other than parks, which is why I put in Damascus Calgary(good place to eat btw) as a test.
 
 ## Premise
 I live in Calgary, Alberta. I like going on walks to Edworthy Park. However, I want to go when there are few people there, because of Covid.<br>
@@ -22,5 +23,5 @@ I don't know why you would want to use this, but here's how:<br>
  - ?park gives you park info. 100 is maximum occupancy, 0 is minimum. It tells you the ratio of current occupancy to usual(average) occupancy, as well as the value of current occupancy, for each location.
  
  ## How does it work?
- Look at page.html. Google doesn't give specific popularity data, but it gives a visual that is made out of a bunch of divs.
- Using BeautifulSoup, we get the height of these divs, and we can report on "approximate" data. I don't need specific numbers anyways.
+ Download [page.html](https://github.com/dungwoong/edworthy/blob/master/page.html) and load it. Google doesn't give specific popularity data, but it gives a visual that is made out of a bunch of divs.
+ Using BeautifulSoup, I get the height of these divs, and we can report on "approximate" data. I don't need specific numbers anyways.
