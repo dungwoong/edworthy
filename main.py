@@ -49,7 +49,7 @@ async def on_ready():
 
 @bot.command(name='test')
 async def basic_command(ctx):
-    msg = '*nice* #### {0.author.mention}'.format(ctx.message)
+    msg = '*nice* {0.author.mention}'.format(ctx.message)
     await ctx.send(msg)
 
 
@@ -62,7 +62,7 @@ async def embed_demo(ctx):
     await ctx.send(embed=embed)
 
 
-# ACTUALLY USEFUL SHIT
+# ACTUALLY USEFUL
 @bot.command(name='help')
 async def help_command(ctx):
     desc = 'test: testing command\n' \
@@ -74,7 +74,7 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
-# TODO add ymca later when it REOPENS HUHH
+# TODO add other locations later
 @bot.command(name='park')
 async def location_info(ctx):
     """NOTES:

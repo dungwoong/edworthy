@@ -1,5 +1,5 @@
 """
-Just some testing stuff I was messing around with before writing main.py
+Just some experimental stuff I was messing around with before writing main.py
 """
 
 import requests
